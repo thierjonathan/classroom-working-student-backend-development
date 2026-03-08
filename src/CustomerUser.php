@@ -5,15 +5,16 @@ namespace App;
 
 use App\Traits\CanLogin;
 
-// Customer user class.
+/**
+ * CustomerUser class.
+ * Represents a customer user with only login capability.
+ */
 class CustomerUser extends UserBase
 {
     use CanLogin;
-    
-    public function __construct(string $name, string $email, string $password)
+
+    public function __construct(string $name, string $email, string $password) 
     {
-        $this->name = $name;
-        $this->email = $email;
-        $this->password = $password;
+        parent::__construct($name, $email, $password);
     }
 }

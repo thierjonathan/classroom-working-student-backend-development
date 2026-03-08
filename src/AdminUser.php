@@ -6,21 +6,25 @@ namespace App;
 use App\Traits\CanLogin;
 use App\Interfaces\Resettable;
 
-//Admin user class.
-class AdminUser extends UserBase
+/**
+ * AdminUser class.
+ * Administrative user with password reset and login capabilities.
+ */
+class AdminUser extends UserBase implements Resettable
 {
     use CanLogin;
-    use Resettable;
 
-    public function __construct(string $name, string $email, string $password)
+    public function __construct(string $name, string $email, string $password) 
     {
-        $this->name = $name;
-        $this->email = $email;
-        $this->password = $password;
+        parent::__construct($name, $email, $password);
     }
 
+    /**
+     * Reset the user's password.
+     * Note: This just prints a message for demo purposes only.
+     */
     public function resetPassword(): void
     {
-        echo "{$this->name} password reset to: customer-new-pass\n";
+        echo "{$this->email} resets password to: newpassword123\n";
     }
 }
